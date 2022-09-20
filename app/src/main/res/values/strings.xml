@@ -9,5 +9,7 @@
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
+    <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
+    <string name="please_wait">Please Wait…</string>
     <string name="sign_in_description_text">Enter your name, email id and password, to register with us.</string>
 </resources>

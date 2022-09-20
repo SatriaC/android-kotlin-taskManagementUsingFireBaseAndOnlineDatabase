@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "542906041911",
+    "project_id": "tasmana-5a139",
+    "storage_bucket": "tasmana-5a139.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542906041911:android:6d8d873fde6ee2adb221b2",
+        "android_client_info": {
+          "package_name": "com.fromzerotohero.tamana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542906041911-cebjk30pi8v9t240iu2u73vfpj8i6jpf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA69T13JPMtrgWDgSr8OlOy5XiToG1g6wY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542906041911-cebjk30pi8v9t240iu2u73vfpj8i6jpf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

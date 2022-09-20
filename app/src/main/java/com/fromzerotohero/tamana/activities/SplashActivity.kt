@@ -1,16 +1,18 @@
-package com.fromzerotohero.tamana
+package com.fromzerotohero.tamana.activities
 
 import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.WindowManager
-import kotlinx.android.synthetic.main.activity_intro.*
+import com.fromzerotohero.tamana.R
+import kotlinx.android.synthetic.main.activity_splash.*
 
-class IntroActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intro)
+        setContentView(R.layout.activity_splash)
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -18,14 +20,11 @@ class IntroActivity : AppCompatActivity() {
         )
 
         val typeFace: Typeface = Typeface.createFromAsset(assets, "carbon bl.ttf")
-        tv_app_name_intro.typeface = typeFace
+        tv_app_name.typeface = typeFace
 
-        btn_sign_up_intro.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
-        }
-
-        btn_sign_in_intro.setOnClickListener {
-            startActivity(Intent(this, SignInActivity::class.java))
-        }
+        Handler().postDelayed({
+            startActivity(Intent(this, IntroActivity::class.java))
+            finish()
+        }, 2500)
     }
 }

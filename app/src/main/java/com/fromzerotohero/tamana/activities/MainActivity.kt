@@ -1,7 +1,8 @@
-package com.fromzerotohero.tamana
+package com.fromzerotohero.tamana.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.fromzerotohero.tamana.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
