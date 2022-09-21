@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
 import com.fromzerotohero.tamana.R
+import com.fromzerotohero.tamana.models.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -25,6 +26,12 @@ class SignInActivity : BaseActivity() {
             signInRegisteredUser()
         }
 
+    }
+
+    fun signInSuccess(user:User){
+        hideProgressDialog()
+        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+        finish()
     }
 
     private fun setupActionBar() {
