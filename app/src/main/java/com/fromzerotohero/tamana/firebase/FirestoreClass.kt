@@ -1,6 +1,10 @@
 package com.fromzerotohero.tamana.firebase
 
+import android.app.Activity
 import android.util.Log
+import android.widget.Toast
+import com.fromzerotohero.tamana.activities.MainActivity
+import com.fromzerotohero.tamana.activities.MyProfileActivity
 import com.fromzerotohero.tamana.activities.SignInActivity
 import com.fromzerotohero.tamana.activities.SignUpActivity
 import com.fromzerotohero.tamana.models.User
@@ -30,7 +34,7 @@ class FirestoreClass {
     /**
      * A function to SignIn using firebase and get the user details from Firestore Database.
      */
-    fun signInUser(activity: SignInActivity) {
+    fun loadUserData(activity: Activity) {
 
         // Here we pass the collection name from which we wants the data.
         mFireStore.collection(Constants.USERS)
@@ -44,10 +48,30 @@ class FirestoreClass {
                 // Here we have received the document snapshot which is converted into the User Data model object.
                 val loggedInUser = document.toObject(User::class.java)!!
 
-                // Here call a function of base activity for transferring the result to it.
-                activity.signInSuccess(loggedInUser)
+                when(activity){
+                    is SignInActivity ->{
+                        activity.signInSuccess(loggedInUser)
+                    }
+                    is MainActivity->{
+                        activity.updateNavigationUserDetails(loggedInUser)
+                    }
+                    is MyProfileActivity ->{
+                        activity.setUserDataInUI(loggedInUser)
+                    }
+                }
             }
             .addOnFailureListener { e ->
+                when(activity){
+                    is SignInActivity ->{
+                        activity.hideProgressDialog()
+                    }
+                    is MainActivity->{
+                        activity.hideProgressDialog()
+                    }
+                    is MyProfileActivity->{
+                        activity.hideProgressDialog()
+                    }
+                }
                 Log.e(
                     activity.javaClass.simpleName,
                     "Error while getting loggedIn user details",
@@ -55,8 +79,40 @@ class FirestoreClass {
                 )
             }
     }
+    /**
+     * A function to update the user profile data into the database.
+     */
+    fun updateUserProfileData(activity: MyProfileActivity, userHashMap: HashMap<String, Any>) {
+        mFireStore.collection(Constants.USERS) // Collection Name
+            .document(getCurrentUserID()) // Document ID
+            .update(userHashMap) // A hashmap of fields which are to be updated.
+            .addOnSuccessListener {
+                // Profile data is updated successfully.
+                Log.i(activity.javaClass.simpleName, "Profile Data updated successfully!")
+
+                Toast.makeText(activity, "Profile updated successfully!", Toast.LENGTH_SHORT).show()
+
+                // Notify the success result.
+                activity.profileUpdateSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while creating a board.",
+                    e
+                )
+                Toast.makeText(activity, "Error when updating the profile", Toast.LENGTH_SHORT).show()
+            }
+    }
 
     fun getCurrentUserID():String{
-        return FirebaseAuth.getInstance().currentUser!!.uid
+        var currentUser = FirebaseAuth.getInstance().currentUser
+        var currentUserID = ""
+        if (currentUser != null){
+            currentUserID = currentUser.uid
+        }
+        return currentUserID
+
     }
 }
