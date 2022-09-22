@@ -5,11 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
 import com.fromzerotohero.tamana.R
 import com.fromzerotohero.tamana.firebase.FirestoreClass
 import com.fromzerotohero.tamana.models.User
+import com.fromzerotohero.tamana.utils.Constants
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +24,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         const val MY_PROFILE_REQUEST_CODE: Int = 11
     }
 
+    private lateinit var mUserName: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,18 +32,37 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         // Assign the NavigationView.OnNavigationItemSelectedListener to navigation view.
         nav_view.setNavigationItemSelectedListener(this)
-        FirestoreClass().loadUserData(this)
+        FirestoreClass().loadUserData(this@MainActivity)
+
+        fab_create_board.setOnClickListener{
+            val intent =  Intent(this@MainActivity, CreateBoardActivity::class.java)
+            intent.putExtra(Constants.NAME, mUserName)
+            startActivity(intent)
+        }
     }
 
     fun updateNavigationUserDetails(user: User) {
-        Glide
-            .with(this)
-            .load(user.image)
-            .centerCrop()
-            .placeholder(R.drawable.ic_user_place_holder)
-            .into(iv_user_image)
 
-        tv_username.text = user.name
+        mUserName = user.name
+
+        // The instance of the header view of the navigation view.
+        val headerView = nav_view.getHeaderView(0)
+
+        // The instance of the user image of the navigation view.
+        val navUserImage = headerView.findViewById<ImageView>(R.id.iv_user_image)
+
+        // Load the user image in the ImageView.
+        Glide
+            .with(this@MainActivity)
+            .load(user.image) // URL of the image
+            .centerCrop() // Scale type of the image.
+            .placeholder(R.drawable.ic_user_place_holder) // A default place holder
+            .into(navUserImage) // the view in which the image will be loaded.
+
+        // The instance of the user name TextView of the navigation view.
+        val navUsername = headerView.findViewById<TextView>(R.id.tv_username)
+        // Set the user name
+        navUsername.text = user.name
     }
 
     override fun onBackPressed() {

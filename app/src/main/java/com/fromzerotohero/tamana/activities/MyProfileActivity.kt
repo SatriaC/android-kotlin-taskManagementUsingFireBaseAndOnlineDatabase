@@ -17,6 +17,8 @@ import com.fromzerotohero.tamana.R
 import com.fromzerotohero.tamana.firebase.FirestoreClass
 import com.fromzerotohero.tamana.models.User
 import com.fromzerotohero.tamana.utils.Constants
+import com.fromzerotohero.tamana.utils.Constants.PICK_IMAGE_REQUEST_CODE
+import com.fromzerotohero.tamana.utils.Constants.READ_STORAGE_PERMISSION_CODE
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_my_profile.*
@@ -40,7 +42,7 @@ class MyProfileActivity : BaseActivity() {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED
             ) {
-                showImageChooser()
+                Constants.showImageChooser(this)
             } else {
                 /*Requests permissions to be granted to this application. These permissions
                  must be requested in your manifest, they should not be granted to your app,
@@ -108,7 +110,7 @@ class MyProfileActivity : BaseActivity() {
             //If permission is granted
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // START
-                showImageChooser()
+                Constants.showImageChooser(this)
                 // END
             } else {
                 //Displaying another toast if permission is not granted
@@ -119,19 +121,6 @@ class MyProfileActivity : BaseActivity() {
                 ).show()
             }
         }
-    }
-
-    /**
-     * A function for user profile image selection from phone storage.
-     */
-    private fun showImageChooser() {
-        // An intent for launching the image selection of phone storage.
-        val galleryIntent = Intent(
-            Intent.ACTION_PICK,
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        )
-        // Launches the image selection of phone storage using the constant code.
-        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST_CODE)
     }
 
     /**
@@ -189,8 +178,8 @@ class MyProfileActivity : BaseActivity() {
 
             //getting the storage reference
             val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
-                "USER_IMAGE" + System.currentTimeMillis() + "." + getFileExtension(
-                    mSelectedImageFileUri
+                "USER_IMAGE" + System.currentTimeMillis() + "." + Constants.getFileExtension(
+                    this, mSelectedImageFileUri
                 )
             )
 
@@ -228,22 +217,6 @@ class MyProfileActivity : BaseActivity() {
     }
 
     /**
-     * A function to get the extension of selected image.
-     */
-    private fun getFileExtension(uri: Uri?): String? {
-        /*
-         * MimeTypeMap: Two-way map that maps MIME-types to file extensions and vice versa.
-         *
-         * getSingleton(): Get the singleton instance of MimeTypeMap.
-         *
-         * getExtensionFromMimeType: Return the registered extension for the given MIME type.
-         *
-         * contentResolver.getType: Return the MIME type of the given content URL.
-         */
-        return MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri!!))
-    }
-
-    /**
      * A function to update the user profile details into the database.
      */
     private fun updateUserProfileData() {
@@ -274,15 +247,6 @@ class MyProfileActivity : BaseActivity() {
         hideProgressDialog()
         setResult(Activity.RESULT_OK)
         finish()
-    }
-
-    /**
-     * A companion object to declare the constants.
-     */
-    companion object {
-        private const val READ_STORAGE_PERMISSION_CODE = 1
-
-        private const val PICK_IMAGE_REQUEST_CODE = 2
     }
 
 

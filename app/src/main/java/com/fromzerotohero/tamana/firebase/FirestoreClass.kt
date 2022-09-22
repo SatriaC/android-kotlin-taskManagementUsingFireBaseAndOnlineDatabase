@@ -3,10 +3,8 @@ package com.fromzerotohero.tamana.firebase
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
-import com.fromzerotohero.tamana.activities.MainActivity
-import com.fromzerotohero.tamana.activities.MyProfileActivity
-import com.fromzerotohero.tamana.activities.SignInActivity
-import com.fromzerotohero.tamana.activities.SignUpActivity
+import com.fromzerotohero.tamana.activities.*
+import com.fromzerotohero.tamana.models.Board
 import com.fromzerotohero.tamana.models.User
 import com.fromzerotohero.tamana.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -114,5 +112,26 @@ class FirestoreClass {
         }
         return currentUserID
 
+    }
+    fun createBoard(activity: CreateBoardActivity, board: Board) {
+
+        mFireStore.collection(Constants.BOARDS)
+            .document()
+            .set(board, SetOptions.merge())
+            .addOnSuccessListener {
+                Log.e(activity.javaClass.simpleName, "Board created successfully.")
+
+                Toast.makeText(activity, "Board created successfully.", Toast.LENGTH_SHORT).show()
+
+                activity.boardCreatedSuccessfully()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while creating a board.",
+                    e
+                )
+            }
     }
 }
