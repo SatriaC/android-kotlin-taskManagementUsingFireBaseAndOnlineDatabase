@@ -7,24 +7,29 @@ data class Board(
     val name: String = "",
     val image: String = "",
     val createdBy: String = "",
-    val assignedTo: ArrayList<String> = ArrayList()
-):Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.createStringArrayList()!!
-    ) {
-    }
+    val assignedTo: ArrayList<String> = ArrayList(),
+    var documentId: String = "",
+    var taskList: ArrayList<Task> = ArrayList()
+) : Parcelable {
+    constructor(source: Parcel) : this(
+        source.readString()!!,
+        source.readString()!!,
+        source.readString()!!,
+        source.createStringArrayList()!!,
+        source.readString()!!,
+        source.createTypedArrayList(Task.CREATOR)!!
+    )
+
+    override fun describeContents() = 0
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
         writeString(name)
         writeString(image)
         writeString(createdBy)
         writeStringList(assignedTo)
+        writeString(documentId)
+        writeTypedList(taskList)
     }
-
-    override fun describeContents(): Int = 0
 
     companion object {
         @JvmField

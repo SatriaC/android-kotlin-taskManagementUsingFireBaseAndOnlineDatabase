@@ -5,20 +5,37 @@
       <map>
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/drawable/ic_action_navigation_menu.xml" value="0.155" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/drawable/ic_black_color_back_24dp.xml" value="0.155" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/drawable/ic_vector_add_24dp.xml" value="0.155" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/drawable/shape_button_rounded.xml" value="0.155" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/drawable/shape_dialog_rounded.xml" value="0.155" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/drawable/white_border_shape_button_rounded.xml" value="0.155" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_card_details.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_create_board.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_intro.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_members.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_my_profile.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_sign_in.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_splash.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/activity_task_list.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/app_bar_main.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/content_main.xml" value="0.11956521739130435" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/dialog_list.xml" value="0.1431159420289855" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/dialog_progress.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/dialog_search_member.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/item_board.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/item_card.xml" value="0.5" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/item_card_selected_member.xml" value="0.1431159420289855" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/item_label_color.xml" value="0.1431159420289855" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/item_member.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/item_task.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/main_content.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/layout/nav_header_main.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/menu/activity_main_drawer.xml" value="0.1796875" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/menu/menu_add_member.xml" value="0.153125" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/menu/menu_delete_card.xml" value="0.1796875" />
+        <entry key="..\:/Users/Satria/AndroidStudioProjects/Tamana/app/src/main/res/menu/menu_members.xml" value="0.203125" />
       </map>
     </option>
   </component>
